@@ -26,7 +26,6 @@ class AppEmptyState extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Icon Circle
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
@@ -41,7 +40,6 @@ class AppEmptyState extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             
-            // Text
             Text(
               title,
               style: context.text.headlineSmall,
@@ -56,7 +54,6 @@ class AppEmptyState extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             
-            // Optional Action Button
             if (actionText != null && onAction != null) ...[
               const SizedBox(height: 24),
               AppButton(

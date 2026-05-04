@@ -25,16 +25,13 @@ class AppListTile extends StatelessWidget {
       onTap: onTap,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       
-      // Leading Icon/Image
       leading: leading,
       
-      // Title (Bold)
       title: Text(
         title,
         style: context.text.titleMedium?.copyWith(fontWeight: FontWeight.w600),
       ),
       
-      // Subtitle (Muted)
       subtitle: subtitle != null
           ? Text(
               subtitle!,
@@ -44,7 +41,6 @@ class AppListTile extends StatelessWidget {
             )
           : null,
           
-      // Trailing (Custom or Arrow)
       trailing: trailing ?? (showArrow && onTap != null
           ? Icon(Icons.chevron_right, color: context.colors.outline)
           : null),

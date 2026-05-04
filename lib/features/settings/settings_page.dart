@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// Imports from your Core Layer
 import '../../core/theme/color/logic/theme_bloc.dart';
 import '../../core/theme/color/model/app_supported_theme.dart';
 
@@ -10,7 +9,6 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Access current theme data for styling the page itself
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -21,9 +19,7 @@ class SettingsPage extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(24),
             children: [
-              // -----------------------------
-              // SECTION 1: ACCENT COLOR
-              // -----------------------------
+
               Text(
                 "Accent Color",
                 style: theme.textTheme.titleMedium?.copyWith(
@@ -56,7 +52,6 @@ class SettingsPage extends StatelessWidget {
                         boxShadow: [
                           if (isSelected)
                             BoxShadow(
-                              // FIXED: replaced withOpacity with withValues
                               color: supportedTheme.seedColor.withValues(alpha: 0.5),
                               blurRadius: 10,
                               offset: const Offset(0, 4),
@@ -75,9 +70,7 @@ class SettingsPage extends StatelessWidget {
               const Divider(),
               const SizedBox(height: 32),
 
-              // -----------------------------
-              // SECTION 2: THEME MODE
-              // -----------------------------
+
               Text(
                 "Display Mode",
                 style: theme.textTheme.titleMedium?.copyWith(
@@ -87,7 +80,7 @@ class SettingsPage extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // Mode: System
+
               _CustomRadioTile<ThemeMode>(
                 value: ThemeMode.system,
                 groupValue: state.themeMode,
@@ -97,7 +90,7 @@ class SettingsPage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
 
-              // Mode: Light
+
               _CustomRadioTile<ThemeMode>(
                 value: ThemeMode.light,
                 groupValue: state.themeMode,
@@ -107,7 +100,7 @@ class SettingsPage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
 
-              // Mode: Dark
+
               _CustomRadioTile<ThemeMode>(
                 value: ThemeMode.dark,
                 groupValue: state.themeMode,
@@ -121,11 +114,8 @@ class SettingsPage extends StatelessWidget {
       ),
     );
   }
-} // <--- ENSURE THIS CLOSING BRACE EXISTS
+}
 
-// ------------------------------------------------------
-// ROBUST CUSTOM COMPONENT (Replaces RadioListTile)
-// ------------------------------------------------------
 class _CustomRadioTile<T> extends StatelessWidget {
   final T value;
   final T groupValue;
@@ -157,7 +147,6 @@ class _CustomRadioTile<T> extends StatelessWidget {
             color: isSelected ? colorScheme.primary : colorScheme.outlineVariant,
             width: isSelected ? 2 : 1,
           ),
-          // FIXED: replaced withOpacity with withValues
           color: isSelected ? colorScheme.primary.withValues(alpha: 0.05) : null,
         ),
         child: Row(
