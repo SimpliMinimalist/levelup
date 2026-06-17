@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/theme/color/logic/theme_bloc.dart';
-import '../../core/theme/color/model/app_supported_theme.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -19,58 +18,6 @@ class SettingsPage extends StatelessWidget {
           return ListView(
             padding: const EdgeInsets.all(24),
             children: [
-
-              Text(
-                "Accent Color",
-                style: theme.textTheme.titleMedium?.copyWith(
-                  color: colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
-              
-              Wrap(
-                spacing: 16,
-                runSpacing: 16,
-                children: AppSupportedTheme.values.map((supportedTheme) {
-                  final isSelected = state.selectedColor == supportedTheme;
-                  
-                  return GestureDetector(
-                    onTap: () {
-                      context.read<ThemeBloc>().add(ChangeThemeColor(supportedTheme));
-                    },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        color: supportedTheme.seedColor,
-                        shape: BoxShape.circle,
-                        border: isSelected
-                            ? Border.all(width: 4, color: colorScheme.onSurface)
-                            : Border.all(width: 1, color: Colors.transparent),
-                        boxShadow: [
-                          if (isSelected)
-                            BoxShadow(
-                              color: supportedTheme.seedColor.withValues(alpha: 0.5),
-                              blurRadius: 10,
-                              offset: const Offset(0, 4),
-                            )
-                        ],
-                      ),
-                      child: isSelected
-                          ? const Icon(Icons.check, color: Colors.white)
-                          : null,
-                    ),
-                  );
-                }).toList(),
-              ),
-
-              const SizedBox(height: 32),
-              const Divider(),
-              const SizedBox(height: 32),
-
-
               Text(
                 "Display Mode",
                 style: theme.textTheme.titleMedium?.copyWith(
@@ -79,7 +26,6 @@ class SettingsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
 
               _CustomRadioTile<ThemeMode>(
                 value: ThemeMode.system,
@@ -90,7 +36,6 @@ class SettingsPage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
 
-
               _CustomRadioTile<ThemeMode>(
                 value: ThemeMode.light,
                 groupValue: state.themeMode,
@@ -99,7 +44,6 @@ class SettingsPage extends StatelessWidget {
                 onChanged: (val) => context.read<ThemeBloc>().add(ToggleThemeMode(val)),
               ),
               const SizedBox(height: 8),
-
 
               _CustomRadioTile<ThemeMode>(
                 value: ThemeMode.dark,

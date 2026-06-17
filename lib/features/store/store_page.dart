@@ -5,12 +5,9 @@ class StorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Store")),
-      body: const SizedBox.shrink(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: const Icon(Icons.add),
+    return const Scaffold(
+      body: Center(
+        child: Text('Store Page'),
       ),
     );
   }

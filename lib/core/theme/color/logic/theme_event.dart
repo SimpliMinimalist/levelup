@@ -14,11 +14,3 @@ class ToggleThemeMode extends ThemeEvent {
   @override
   List<Object> get props => [mode];
 }
-
-class ChangeThemeColor extends ThemeEvent {
-  final AppSupportedTheme color;
-  ChangeThemeColor(this.color);
-
-  @override
-  List<Object> get props => [color];
-}
